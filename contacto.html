@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<title>SATORU | CONTACTO</title>
+	<link rel="stylesheet" type="text/css" href="css/styleform.css">
+	<link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
+    <link rel="shortcut icon" href="assets/img/satoruico.ico" type="image/x-icon">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script>
+        //Expresión para validar un correo electrónico
+        var expr = /^[a-zA-Z0-9_\.\-]+@[a-zA-Z0-9\-]+\.[a-zA-Z0-9\-\.]+$/;
+        //Expresión para validar edad de 18 a 60 años
+        var expr2 = /^1[8-9]|[2-5]\d|60$/;
+        $(document).ready(function(){
+
+            $("#bEnviar").click(function(){
+
+                var nombre = $("#itNombre").val();
+                var correo = $("#itMail").val();
+                var asunto = $("#itAsunto").val();
+                var edad = $("#itEdad").val();
+
+                if(nombre == ""){
+                    $("#mensaje1").fadeIn("slow");
+                    return false;
+                }
+
+                else{
+                    $("#mensaje1").fadeOut("");
+ 
+
+                    if(correo == "" || !expr.test(correo)){
+                        $("#mensaje2").fadeIn("slow");
+                        return false;
+                    }
+                    else{
+                        $("#mensaje2").fadeOut("");
+ 
+                        if(edad == "" || !expr2.test(edad)){
+                            $("#mensaje3").fadeIn("slow");
+                            return false;
+                        }
+                        else{
+                            $("#mensaje3").fadeOut("");
+ 
+                            if(asunto == ""){
+                                $("#mensaje4").fadeIn("slow");
+                                return false;
+                            }
+                        }
+                    }
+                }
+ 
+            });//click
+        });//ready
+    </script>
+
+</head>
+<body>
+	<div class="container">
+		<form class="contact-box" action="correos.php" method="POST">
+			<div class="left"></div>
+			<div class="right">
+				<h2>CONTACTO</h2>
+
+				<input type="text" name="nombre" id="itNombre" class="field" placeholder="Nombres y Apellidos">
+                <div id="mensaje1" class="errores">Nombre Incorrecto</div>
+
+				<input type="text" name="email" id="itMail" class="field" placeholder="Correo Electronico">
+                <div id="mensaje2" class="errores">Correo Incorrecto</div>
+
+                <input type="text" name="edad" id="itEdad" class="field" placeholder="Edad">
+                <div id="mensaje3" class="errores">Edad mínima requerida</div>
+
+                <textarea placeholder="Asunto" name="asunto" id="itAsunto" class="field" style="resize: none;"></textarea>
+                <div id="mensaje4" class="errores">Ingrese información</div>
+
+				<button method="POST" type="submit" id="bEnviar" class="btn">Enviar</button>
+			</div>
+		</form>
+	</div>
+    <div>
+        <footer class="footer">
+            <div class="container footer__grid">
+                <nav class="nav nav--footer">
+                    <a href="/index.html#hero" class="nav__items nav__items--footer">Inicio</a>
+                    <a href="/index.html#about" class="nav__items nav__items--footer">Sobre mi</a>
+                    <a href="/index.html#about1" class="nav__items nav__items--footer">Skills</a>
+                    <a href="/index.html#projects" class="nav__items nav__items--footer">Proyectos</a>
+                </nav>
+    
+                <section class="footer__contact">                
+                    
+                    <div class="footer__icons">
+                        
+                        <span class="footer__container-icons">
+                            <a class="fab fa-facebook-f footer__icons" target="_blank" href=""></a>
+                        </span>
+                            
+                        <span class="footer__container-icons">
+                            <a class="fab fa-instagram footer__icons" target="_blank" href=""></a>
+                        </span>
+    
+                        <span class="footer__container-icons">
+                            <a class="fab fa-twitter footer__icons" target="_blank" href=""></a>
+                        </span>
+    
+                    </div>
+                </section>
+            </div>
+            <div>
+                <p class="nav__p">© 2021 Copyright: Elaborado por Julio Mau | Satoru Code</p>
+                <audio type="hidden" src="assets/sound/relax.mp3" autoplay></audio>
+            </div>
+        </footer>
+    
+    
+        <script src="https://kit.fontawesome.com/6ffcd875f1.js" crossorigin="anonymous"></script>
+        
+    </div>
+</body>
+</html>
